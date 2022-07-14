@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateProduto;
+use App\Mail\WelcomeMessage;
 use App\Models\Loja;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ProdutoController extends Controller
 {
@@ -46,13 +48,24 @@ class ProdutoController extends Controller
      */
     public function store(StoreUpdateProduto $request)
     {
-        // dd($data = $request->lojas);
+        // dd($data = $request->all());
         $lojas = $request->lojas;
         $data = $request->all();
         $produto = $this->repository->create($data);
         $pivot = $produto->lojas()->attach($lojas);
+        
+        if($request->lojas)
+        $emailLojas = Loja::whereIn('id', $lojas)->get();
+        // dd($emailLojas);
+        foreach ($emailLojas as $enviar){
+        
+            Mail::to($enviar->email)
+            ->send(new WelcomeMessage());
+        
+        }
         return redirect()->route('produtos.index');
     }
+        
 
     /**
      * Display the specified resource.
