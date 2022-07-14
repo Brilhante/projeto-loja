@@ -46,10 +46,11 @@ class ProdutoController extends Controller
      */
     public function store(StoreUpdateProduto $request)
     {
-        // dd($data = $request->all());
+        // dd($data = $request->lojas);
+        $lojas = $request->lojas;
         $data = $request->all();
-        $produto = $this->repository->create($data['name'], $data['valor']);
-        $pivot = $produto->lojas->attach($data['lojas']);
+        $produto = $this->repository->create($data);
+        $pivot = $produto->lojas()->attach($lojas);
         return redirect()->route('produtos.index');
     }
 
