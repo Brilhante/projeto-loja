@@ -61,12 +61,9 @@ class ProdutoController extends Controller
         
             Mail::to($enviar->email)
             ->send(new WelcomeMessage());
-        
         }
         return redirect()->route('produtos.index');
     }
-        
-
     /**
      * Display the specified resource.
      *

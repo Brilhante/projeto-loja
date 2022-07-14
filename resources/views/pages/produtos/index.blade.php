@@ -36,7 +36,7 @@
                             <a href="{{ route('produtos.edit', $produto->id) }}" class="btn btn-sm btn-primary">Editar</a>
                             <a href="{{ route('produtos.show', $produto->id) }}" class="btn btn-sm btn-warning">VER</a>
                             <div class="btn-group">
-                                <form action="{{ route('lojas.destroy', $produto->id) }}" method="POST">
+                                <form action="{{ route('produtos.destroy', $produto->id) }}" method="POST">
                                     @csrf 
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
