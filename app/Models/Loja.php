@@ -11,4 +11,9 @@ class Loja extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'email'];
+
+    public function produtos()
+    {
+        return $this->belongsToMany(Produto::class);
+    }
 }

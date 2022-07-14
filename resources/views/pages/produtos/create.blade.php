@@ -24,7 +24,7 @@
                         
                                 @foreach ($lojas as $loja )
                                 <tr>
-                                    <td class="pl-3"><input type="checkbox" name="lojas[]" value="{{ $loja->name }}"></td>
+                                    <td class="pl-3"><input type="checkbox" name="lojas[]" value="{{ $loja->id }}"></td>
                                     <td class="pl-3">{{ $loja->name }}</td>
                                 </tr>
                             </tbody>    

@@ -10,4 +10,9 @@ class Produto extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'valor', 'id_loja', 'ativo'];
+
+    public function lojas()
+    {
+        return $this->belongsToMany(Loja::class);
+    }
 }

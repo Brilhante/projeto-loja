@@ -17,7 +17,6 @@ class CreateProdutosTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('valor');
-            $table->integer('id_loja')->nullable();
             $table->boolean('ativo')->default(true);
             $table->timestamps();
         });
