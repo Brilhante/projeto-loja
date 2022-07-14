@@ -12,14 +12,33 @@
             <form action="{{ route('produtos.store') }}" class="form" method="POST">
                 @csrf
                 @include('includes.alerts')
-
+                <div class="card">
+                    <table>
+                        <thead class="table table-condensed">
+                            <tr>
+                            <th class="pl-3" width="50px">#</th>
+                            <th>Nome:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                                @foreach ($lojas as $loja )
+                                <tr>
+                                    <td class="pl-3"><input type="checkbox" name="lojas[]" value="{{ $loja->name }}"></td>
+                                    <td class="pl-3">{{ $loja->name }}</td>
+                                </tr>
+                            </tbody>    
+                            @endforeach
+                
+                    </table>
+                </div>
                 <div class="form-group">
                     <label for="name">Nome:</label>
                     <input type="text" name="name" class="form-control" placeholder="Nome:" value="{{ $produto->name ?? old('name') }}">
                 </div>
                 <div class="form-group">
                     <label for="valor">Valor:</label>
-                    <input type="text" name="valor" class="form-control" placeholder="valor:" value="{{ $produto->valor ?? old('valor') }}">
+                    <input type="text" name="valor" class="form-control" placeholder="Valor:" value="{{ $produto->valor ?? old('valor') }}">
                     
                 </div>
                 <li class="d-inline-block mr-2">
@@ -34,7 +53,7 @@
                         </div>
                     </fieldset>
                 </li>
-                <li class="d-inline-block mr-2">
+                <li class="d-inline-block mr-2 mb-4">
                     <fieldset>
                         <div class="vs-radio-con vs-radio-primary">
                             <input type="radio" 

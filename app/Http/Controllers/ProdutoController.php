@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateProduto;
+use App\Models\Loja;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 
@@ -33,7 +34,8 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        return view('pages.produtos.create');
+        $lojas = Loja::all();
+        return view('pages.produtos.create', compact('lojas'));
     }
 
     /**
