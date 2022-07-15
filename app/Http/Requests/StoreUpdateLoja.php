@@ -26,7 +26,7 @@ class StoreUpdateLoja extends FormRequest
         $id = $this->segment(2);
         
         return [
-            'name' => "required|min:3|max:255|unique:lojas,name,{$id},id",
+            'name' => "required|min:3|max:60|unique:lojas,name,{$id},id",
             'email' => "required|email|unique:lojas,email,{$id},id",
         ];
     }

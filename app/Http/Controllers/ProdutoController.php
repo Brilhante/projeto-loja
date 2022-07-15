@@ -60,7 +60,7 @@ class ProdutoController extends Controller
         foreach ($emailLojas as $enviar){
         
             Mail::to($enviar->email)
-            ->send(new WelcomeMessage());
+                ->send(new WelcomeMessage());
         }
         return redirect()->route('produtos.index');
     }

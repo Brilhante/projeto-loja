@@ -3,7 +3,7 @@
 @section('title', 'Lojas')
 
 @section('content_header')
-    <h1><a href="{{ route('lojas.create') }}" class="btn btn-dark">ADD</a> Loja</h1>
+    <h1><a href="{{ route('lojas.create') }}" class="btn btn-dark">Adicionar</a> Loja</h1>
 @stop
 
 @section('content')
@@ -29,13 +29,14 @@
                             {{ $loja->email }}
                         </td>
                         <td style="width= 10rem">
-                            <a href="{{ route('lojas.edit', $loja->id) }}" class="btn btn-sm btn-primary">Editar</a>
-                            <a href="{{ route('lojas.show', $loja->id) }}" class="btn btn-sm btn-warning">VER</a>
+                            <a href="{{ route('lojas.edit', $loja->id) }}" class="btn btn-primary">
+                                <i title="Editar" class="far fa-edit"></i></a>
+                            <a href="{{ route('lojas.show', $loja->id) }}" class="btn btn-warning"><i title="Visualizar" class="fas fa-search"></i></a></a>
                             <div class="btn-group">
                                 <form action="{{ route('lojas.destroy', $loja->id) }}" method="POST">
                                     @csrf 
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Deletar</button>
+                                    <button type="submit" class="btn btn-danger"><i title="Deletar" class="far fa-trash-alt"></i></button>
                                 </form>
                             </div>
                         </td>
